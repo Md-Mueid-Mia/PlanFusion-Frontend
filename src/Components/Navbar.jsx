@@ -9,6 +9,7 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
   const handleThemeToggle = () => {
     setIsDarkMode(!isDarkMode);
@@ -35,84 +36,184 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar bg-gradient-to-r from-blue-500 via-purple-600 to-indigo-700 shadow-lg px-6 py-3 text-white">
-      <div className="navbar-start">
-        <a className="text-3xl font-bold tracking-wide">PlanFusion</a>
-      </div>
-
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 space-x-6 text-lg">
-          <li>
-            <NavLink to="/" className={({ isActive }) => isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"}>
+    <nav className="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 shadow-lg sticky top-0 z-50">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center">
+            <NavLink to="/" className="text-3xl font-bold tracking-wide text-white">
+              PlanFusion
+            </NavLink>
+          </div>
+  
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex md:items-center md:space-x-6">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-green-500 font-bold flex items-center justify-center" : "flex items-center justify-center text-white transition hover:text-green-500"
+              }
+            >
               <FiHome className="inline-block mr-2" /> Home
             </NavLink>
-          </li>
-          <li>
-            <NavLink to="/taskboard" className={({ isActive }) => isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"}>
+            <NavLink
+              to="/taskboard"
+              className={({ isActive }) =>
+                isActive ? "text-green-500 font-bold flex items-center justify-center" : "text-white flex items-center justify-center hover:text-green-500 transition"
+              }
+            >
               <FiClipboard className="inline-block mr-2" /> Tasks
             </NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile" className={({ isActive }) => isActive ? "text-yellow-300 font-bold" : "hover:text-yellow-300"}>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                isActive ? "text-green-500 font-bold flex items-center justify-center" : "text-white flex items-center justify-center hover:text-green-500 transition"
+              }
+            >
               <FiUser className="inline-block mr-2" /> Profile
             </NavLink>
-          </li>
-        </ul>
-      </div>
-
-      <div className="navbar-end flex items-center space-x-4">
-        <label className="hidden lg:flex cursor-pointer" title="Toggle Dark Mode">
-          <input type="checkbox" className="hidden" onChange={handleThemeToggle} />
-          {isDarkMode ? <MdLightMode className="w-7 h-7 cursor-pointer" /> : <MdDarkMode className="w-7 h-7 cursor-pointer" />}
-        </label>
-
-        {user ? (
-          <div className="hidden lg:flex items-center space-x-3">
-            <img src={user.photoURL || "/default-avatar.png"} alt="User Avatar" className="w-10 h-10 rounded-full border border-gray-300" />
-            <span className="font-medium">{user.displayName || "User"}</span>
-            <button onClick={handleSignOut} className="btn btn-error flex items-center space-x-2">
-              <FiLogOut /> <span>Logout</span>
+          </div>
+  
+          {/* Action Buttons */}
+          <div className="hidden md:flex md:items-center md:space-x-4">
+      <button
+        onClick={handleThemeToggle}
+        title="Toggle Dark Mode"
+        className="text-2xl transition text-white hover:text-green-500"
+      >
+        {isDarkMode ? <MdLightMode /> : <MdDarkMode />}
+      </button>
+      {user ? (
+        <div className="relative">
+          <img
+            src={user.photoURL || "/default-avatar.png"}
+            alt="User Avatar"
+            className="w-10 h-10 rounded-full border border-gray-300 cursor-pointer"
+            onClick={() => setIsUserDropdownOpen((prev) => !prev)}
+            referrerPolicy="no-referrer"
+          />
+          {isUserDropdownOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
+              <div className="px-4 py-2 text-gray-700 border-b">
+                {user.displayName || "User"}
+              </div>
+              <button
+                onClick={() => {
+                  handleSignOut();
+                  setIsUserDropdownOpen(false);
+                }}
+                className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 transition"
+              >
+                <div className="flex items-center space-x-2 cursor-pointer">
+                  <FiLogOut />
+                  <span>Logout</span>
+                </div>
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <NavLink
+          to="/login"
+          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg transition"
+        >
+          Sign In
+        </NavLink>
+      )}
+    </div>
+  
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-2xl text-white focus:outline-none"
+            >
+              <FiMenu />
             </button>
           </div>
-        ) : (
-          <NavLink to="/login" className="btn btn-primary px-4 py-2 rounded-lg">Sign In</NavLink>
-        )}
-      </div>
-
-      <div className="dropdown navbar-end lg:hidden relative">
-        <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="btn btn-ghost btn-circle">
-          <FiMenu className="h-6 w-6" />
-        </button>
+        </div>
+  
+        {/* Mobile Dropdown Menu */}
         {isDropdownOpen && (
-          <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-gray-900 absolute right-0 top-full">
-            <li>
-              <NavLink to="/"> <FiHome className="inline-block mr-2" /> Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/taskboard"> <FiClipboard className="inline-block mr-2" /> Tasks</NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile"> <FiUser className="inline-block mr-2" /> Profile</NavLink>
-            </li>
-            {user && (
-              <>
-                <li className="flex items-center px-4 py-2">
-                  <img src={user.photoURL || "/default-avatar.png"} alt="User Avatar" className="w-8 h-8 rounded-full border border-gray-300 mr-3" />
-                  <span className="font-medium">{user.displayName || "User"}</span>
-                </li>
-                <li>
-                  <button onClick={handleSignOut} className="text-error flex items-center">
-                    <FiLogOut className="mr-2" /> Logout
-                  </button>
-                </li>
-              </>
-            )}
-            {!user && (
+          <div className="mt-4 md:hidden">
+            <ul className="space-y-2 bg-white rounded-md shadow-lg p-4 text-gray-900">
               <li>
-                <NavLink to="/login">Sign In</NavLink>
+                <NavLink
+                  to="/"
+                  onClick={() => setIsDropdownOpen(false)}
+                  className="flex items-center space-x-2 hover:text-yellow-500 transition"
+                >
+                  <FiHome />
+                  <span>Home</span>
+                </NavLink>
               </li>
-            )}
-          </ul>
+              <li>
+                <NavLink
+                  to="/taskboard"
+                  onClick={() => setIsDropdownOpen(false)}
+                  className="flex items-center space-x-2 hover:text-yellow-500 transition"
+                >
+                  <FiClipboard />
+                  <span>Tasks</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/profile"
+                  onClick={() => setIsDropdownOpen(false)}
+                  className="flex items-center space-x-2 hover:text-yellow-500 transition"
+                >
+                  <FiUser />
+                  <span>Profile</span>
+                </NavLink>
+              </li>
+              <li className="flex items-center space-x-2">
+                <button
+                  onClick={handleThemeToggle}
+                  className="text-2xl hover:text-green-500 transition"
+                  title="Toggle Dark Mode"
+                >
+                  {isDarkMode ? <MdLightMode className="text-white"/> : <MdDarkMode className="text-white"/>}
+                </button>
+                <span>Theme</span>
+              </li>
+              {user ? (
+                <>
+                  <li className="flex items-center space-x-2">
+                    <img
+                      src={user.photoURL || "/default-avatar.png"}
+                      alt="User Avatar"
+                      className="w-8 h-8 rounded-full border border-gray-300"
+                      referrerPolicy="no-referrer"
+                    />
+                    <span className="font-medium">{user.displayName || "User"}</span>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => {
+                        handleSignOut();
+                        setIsDropdownOpen(false);
+                      }}
+                      className="flex items-center space-x-2 text-red-600 hover:text-red-700 transition"
+                    >
+                      <FiLogOut />
+                      <span>Logout</span>
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li>
+                  <NavLink
+                    to="/login"
+                    onClick={() => setIsDropdownOpen(false)}
+                    className="block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                  >
+                    Sign In
+                  </NavLink>
+                </li>
+              )}
+            </ul>
+          </div>
         )}
       </div>
     </nav>

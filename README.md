@@ -39,7 +39,7 @@ Ensure you have the following installed:
 
 ### Clone the repository
 ```bash
-$ git clone https://github.com/shaikatahmed78/taskmate-frontend.git
+$ git clone https://github.com/Md-Mueid-Mia/PlanFusion-Frontend.git
 $ cd taskmate-frontend
 ```
 
@@ -64,7 +64,7 @@ VITE_FIREBASE_APP_ID=your_app_id
 $ npm run dev
 ```
 
-This will run the project at `http://localhost:5173/`.
+This will run the project at `http://localhost:5173`.
 
 ---
 

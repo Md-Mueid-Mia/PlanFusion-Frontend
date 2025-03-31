@@ -49,6 +49,7 @@ const ProfileList = () => {
               <img
                 src={acc.photoURL || "https://via.placeholder.com/150"}
                 alt={acc.name}
+                referrerPolicy="no-referrer"
                 className="w-24 h-24 rounded-full shadow-md mb-4 border-4 border-gray-300 dark:border-gray-700"
               />
               <h2 className="text-xl font-bold mb-1">{acc.name}</h2>
