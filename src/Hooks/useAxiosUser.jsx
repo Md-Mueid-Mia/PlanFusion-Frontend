@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const axiosUser = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://plan-fusion-backend-nine.vercel.app',
     withCredentials: true
 
 })

@@ -7,7 +7,7 @@ import { AuthContext } from "./AuthProvider";
 export const TaskContext = createContext();
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://plan-fusion-backend-nine.vercel.app",
   withCredentials: true,
 });
 

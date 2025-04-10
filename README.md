@@ -1,5 +1,7 @@
 # PlanFusion Frontend
 
+[Live Demo](https://planfushion.web.app)
+
 PlanFusion Frontend is the client-side application for the TaskMate task management system. It provides a seamless and interactive user experience for task management with real-time updates, drag-and-drop functionality, and an intuitive UI.
 
 ## 🚀 Tech Stack
@@ -37,13 +39,13 @@ Ensure you have the following installed:
 - **[Vite](https://vitejs.dev/)**
 - **[Firebase Account](https://firebase.google.com/)**
 
-### Clone the repository
+### Clone the Repository
 ```bash
 $ git clone https://github.com/Md-Mueid-Mia/PlanFusion-Frontend.git
 $ cd taskmate-frontend
 ```
 
-### Install dependencies
+### Install Dependencies
 ```bash
 $ npm install
 ```
@@ -64,44 +66,45 @@ VITE_FIREBASE_APP_ID=your_app_id
 $ npm run dev
 ```
 
-This will run the project at `http://localhost:5173`.
+This will run the project at [http://localhost:5173](http://localhost:5173).
 
 ---
 
 ## 🔗 API Endpoints
+
 TaskMate frontend interacts with the TaskMate backend using the following endpoints:
 
-| Method | Endpoint           | Description                  |
-|--------|-------------------|------------------------------|
-| `POST` | `/jwt`            | Generate JWT token          |
-| `POST` | `/records`        | Create a new task           |
-| `GET`  | `/records/:email` | Fetch user tasks            |
-| `PATCH`| `/records/:id`    | Update a task               |
-| `DELETE`| `/records/:id`   | Delete a task               |
+| Method  | Endpoint            | Description                |
+|---------|---------------------|----------------------------|
+| `POST`  | `/jwt`              | Generate JWT token         |
+| `POST`  | `/records`          | Create a new task          |
+| `GET`   | `/records/:email`   | Fetch user tasks           |
+| `PATCH` | `/records/:id`      | Update a task              |
+| `DELETE`| `/records/:id`      | Delete a task              |
 
 ---
 
 ## ⚡ Optimizations & Best Practices
 
-- **Code Splitting** using dynamic imports.
-- **React Query for API caching** to reduce network requests.
-- **Lazy Loading Images** for better performance.
-- **Error Handling** with `try-catch` and toast notifications.
-- **Reusable Components** to keep the code DRY.
+- **Code Splitting:** Uses dynamic imports.
+- **React Query for API caching:** Reduces network requests.
+- **Lazy Loading Images:** Enhances performance.
+- **Error Handling:** Implements try-catch and toast notifications.
+- **Reusable Components:** Keeps the code DRY.
 
 ---
 
 ## 🛑 Common Issues & Troubleshooting
 
-### 1️⃣ Firebase Authentication Errors
-- Ensure your Firebase API keys are correct.
-- Check if Firebase Authentication is enabled for Email/Password.
+### Firebase Authentication Errors
+- Verify that your Firebase API keys are correct.
+- Ensure Firebase Authentication is enabled for Email/Password.
 
-### 2️⃣ CORS Issues
-- Make sure the backend CORS settings allow requests from `http://localhost:5173`.
+### CORS Issues
+- Confirm that the backend CORS settings allow requests from [http://localhost:5173](http://localhost:5173).
 
-### 3️⃣ Deployment Issues
-- Ensure all `.env` variables are correctly set up in production.
+### Deployment Issues
+- Make sure all `.env` variables are correctly set up for production.
 
 ---
 
@@ -132,9 +135,9 @@ $ netlify deploy
 ---
 
 ## 📞 Support
+
 For any issues, contact me at [shaikatahmed78@gmail.com](mailto:shaikatahmed78@gmail.com).
 
 ---
 
 Thank you for using **PlanFusion**! 🎉
-
