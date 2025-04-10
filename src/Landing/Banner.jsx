@@ -37,7 +37,7 @@ const Banner = () => {
                                 {index === 2 && "Boost productivity with tailored task management solutions."}
                             </p>
                             <Link to="/taskboard">
-                                <button className="mt-6 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:scale-105 hover:from-purple-600 hover:to-indigo-600 transition-all">
+                                <button className="mt-6 bg-gradient-to-r from-cyan-500 to-indigo-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:scale-105 hover:from-purple-600 hover:to-indigo-600 transition-all">
                                     Explore Features
                                 </button>
                             </Link>

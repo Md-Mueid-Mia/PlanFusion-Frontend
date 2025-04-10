@@ -22,7 +22,7 @@ const TaskManagementDemo = () => {
                     </ul>
                     <Link
                         to="/taskboard"
-                        className="mt-8 inline-block bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold shadow-md hover:bg-green-600 transition-colors"
+                        className="mt-8 inline-block bg-gradient-to-r from-cyan-500 to-indigo-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold shadow-md hover:bg-green-600 transition-colors"
                     >
                         Try it Now
                     </Link>

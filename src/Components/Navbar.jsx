@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <NavLink to="/" className="text-3xl font-bold tracking-wide text-white">
+            <NavLink to="/" className="text-3xl font-bold tracking-wide text-cyan-500">
               PlanFusion
             </NavLink>
           </div>
@@ -51,7 +51,7 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "text-green-500 font-bold flex items-center justify-center" : "flex items-center justify-center text-white transition hover:text-green-500"
+                isActive ? "text-cyan-500 font-bold flex items-center justify-center" : "flex items-center justify-center text-white transition hover:text-cyan-500"
               }
             >
               <FiHome className="inline-block mr-2" /> Home
@@ -59,7 +59,7 @@ const Navbar = () => {
             <NavLink
               to="/taskboard"
               className={({ isActive }) =>
-                isActive ? "text-green-500 font-bold flex items-center justify-center" : "text-white flex items-center justify-center hover:text-green-500 transition"
+                isActive ? "text-cyan-500 font-bold flex items-center justify-center" : "text-white flex items-center justify-center hover:text-cyan-500 transition"
               }
             >
               <FiClipboard className="inline-block mr-2" /> Tasks
@@ -67,7 +67,7 @@ const Navbar = () => {
             <NavLink
               to="/profile"
               className={({ isActive }) =>
-                isActive ? "text-green-500 font-bold flex items-center justify-center" : "text-white flex items-center justify-center hover:text-green-500 transition"
+                isActive ? "text-cyan-500 font-bold flex items-center justify-center" : "text-white flex items-center justify-center hover:text-cyan-500 transition"
               }
             >
               <FiUser className="inline-block mr-2" /> Profile
@@ -76,13 +76,13 @@ const Navbar = () => {
   
           {/* Action Buttons */}
           <div className="hidden md:flex md:items-center md:space-x-4">
-      <button
+      {/* <button
         onClick={handleThemeToggle}
         title="Toggle Dark Mode"
-        className="text-2xl transition text-white hover:text-green-500"
+        className="text-2xl transition text-white hover:text-cyan-500"
       >
         {isDarkMode ? <MdLightMode /> : <MdDarkMode />}
-      </button>
+      </button> */}
       {user ? (
         <div className="relative">
           <img
@@ -167,7 +167,7 @@ const Navbar = () => {
                   <span>Profile</span>
                 </NavLink>
               </li>
-              <li className="flex items-center space-x-2">
+              {/* <li className="flex items-center space-x-2">
                 <button
                   onClick={handleThemeToggle}
                   className="text-2xl hover:text-green-500 transition"
@@ -176,7 +176,7 @@ const Navbar = () => {
                   {isDarkMode ? <MdLightMode className="text-white"/> : <MdDarkMode className="text-white"/>}
                 </button>
                 <span>Theme</span>
-              </li>
+              </li> */}
               {user ? (
                 <>
                   <li className="flex items-center space-x-2">
